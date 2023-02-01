@@ -113,7 +113,9 @@ app.post("/foodItem", async(req,res)=>{
 app.get("/foodItemByCategory", async(req, res)=>{
     const {category} = req.query;
 
-    const foodItem = await FoodItem.find({category:category});
+    const foodItem = await FoodItem.find({
+        category:{$regex:category , $option:'i'}
+    });
     res.json({
         success:true,
         message:"FootItem fetched successfully.",
