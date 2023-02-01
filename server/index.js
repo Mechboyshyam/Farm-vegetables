@@ -109,6 +109,31 @@ app.post("/foodItem", async(req,res)=>{
         data:savedFoodItem
     })
 })
+
+app.get("/foodItemByCategory", async(req, res)=>{
+    const {category} = req.query;
+
+    const foodItem = await FoodItem.find({category:category});
+    res.json({
+        success:true,
+        message:"FootItem fetched successfully.",
+        data:foodItem
+    })
+})
+
+app.get("/foodItemByName", async(req,res)=>{
+    const {title} =req.query;
+
+    const foodItem = await FoodItem.find({
+        title:{$regex:title, $options:'i'}
+    });
+
+    res.json({
+        success:true,
+        message:"FoodItem fetched successfully.",
+        data:foodItem
+    })
+})
 // API ends here
 
 
