@@ -5,6 +5,7 @@ dotenv.config();
 
 import User from "./modals/user.js"
 import FoodItem from './modals/FoodItem.js'
+import Table from './modals/Table.js';
 const app = express();
 app.use(express.json());
 mongoose.set("strictQuery", false);
@@ -134,6 +135,71 @@ app.get("/foodItemByName", async(req,res)=>{
         success:true,
         message:"FoodItem fetched successfully.",
         data:foodItem
+    })
+})
+
+app.post("/createTable" , async(req,res)=>{
+    const {tableNumber}= req.body;
+
+    const existingTable = await Table.findOne({tableNumber:tableNumber});
+    if (existingTable){
+        return res.json({
+            success:false,
+            message:"Table already exist."
+        })
+    }
+    const table = new Table({
+        tableNumber:tableNumber,
+        occupied:false
+    })
+    const savedTable = await table.save();
+    res.json({
+        success:true,
+        message:"Table created succesfully",
+        data:savedTable
+    })
+})
+
+app.post("/bookTable" , async(req,res)=>{
+    const {tableNumber, userId}=req.body;
+
+    const existingTable = await Table.findOne({tableNumber:tableNumber});
+    
+    if (existingTable && existingTable.occupied){
+        return res.json({
+            success:false,
+            message:"Table already booked"
+        })
+    }
+
+    if (existingTable){
+        existingTable.occupied=true,
+        existingTable.occupiedBy= userId,
+        await existingTable.save();
+    }
+
+    res.json({
+        success:true,
+        message:"Table booked successfully",
+        data:existingTable
+    })
+})
+
+app.post("/unbookTable", async(req,res)=>{
+    const {tableNumber} = req.body;
+
+    const existingTable = await Table.findOne({tableNumber:tableNumber});
+
+    if (existingTable){
+        existingTable.occupied=false,
+        existingTable.occupiedBy=null,
+        await existingTable.save();
+    }
+
+    res.json({
+        success:true,
+        message:"Table unbooked successfully",
+        data:existingTable
     })
 })
 // API ends here
