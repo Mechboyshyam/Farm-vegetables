@@ -6,8 +6,10 @@ dotenv.config();
 import User from "./modals/user.js"
 import FoodItem from './modals/FoodItem.js'
 import Table from './modals/Table.js';
+import Order from './modals/Order.js'
+
 const app = express();
-app.use(express.json());
+app.use(express.json()); 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGODB_URL , ()=>{
     console.log("Connected to MongoDB...")
@@ -200,6 +202,63 @@ app.post("/unbookTable", async(req,res)=>{
         success:true,
         message:"Table unbooked successfully",
         data:existingTable
+    })
+})
+
+app.get("/availableTables" , async(req,res)=>{
+
+    const availableTables = await Table.find({occupied:false});
+
+    res.json({
+        success:true,
+        message:"Available tables fectched successfully",
+        data:availableTables
+    })
+})
+
+app.post("/orderFoodItems" , async(req,res)=>{
+    const {userId, tableNumber, items} = req.body;
+
+    const totalOrder = await Order.countDocuments();
+    const orderId = totalOrder + 1;
+
+    const order = new Order({
+        userId:userId,
+        orderId:orderId,
+        tableNumber:tableNumber,
+        items:items
+    })
+
+    const savedOrder = await order.save();
+
+    res.json({
+        success:true,
+        message:"Order placed",
+        data:savedOrder
+    })
+})
+
+app.get("/order", async(req,res)=>{
+    const {orderId} = req.query;
+
+    const order = await Order.findOne({orderId:orderId});
+
+    res.json({
+        success:true,
+        message:"Your ordered items",
+        data:order
+    })
+})
+
+app.get("/orderByUserId", async(req,res)=>{
+    const {userId} = req.query;
+
+    const order = await Order.find({userId:userId});
+
+    res.json({
+        success:true,
+        message:"Order fetched successfully",
+        data:order
     })
 })
 // API ends here
