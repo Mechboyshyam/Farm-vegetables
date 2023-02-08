@@ -1,0 +1,16 @@
+.search-box-row{
+    margin-left: 5rem;
+}
+
+.search-box{
+    width: 300px;
+    margin-top: 7px;
+    padding: 6px;
+    border:1px solid black;
+    border-radius: 8px;
+    text-align: center;git 
+}
+
+.title-nxt-div{
+    margin-left: 100px;
+}
