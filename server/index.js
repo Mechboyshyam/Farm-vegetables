@@ -113,6 +113,30 @@ app.post("/foodItem", async(req,res)=>{
     })
 })
 
+app.get("/allFoodItems", async(req,res)=>{
+    const foodItem = await FoodItem.find()
+
+    res.json({
+        success:true,
+        message:'food item fetched succesfully',
+        data: foodItem
+    })
+})
+
+app.get('/foodItems', async(req,res)=>{
+    const {title} = req.query;
+
+    const foodItem = await FoodItem.find({
+        title: {$regex: title, $options:'i'}
+    })
+
+    res.json({
+        success:true,
+        message: "Food item fetched successfully",
+        data: foodItem
+    })
+})
+
 app.get("/foodItemByCategory", async(req, res)=>{
     const {category} = req.query;
 

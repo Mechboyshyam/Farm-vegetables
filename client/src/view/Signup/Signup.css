@@ -1,0 +1,71 @@
+.body{
+    justify-content: center;
+}
+
+.signup-title{
+    text-align: center;
+    border: 2px solid green;
+    border-radius: 0px 35px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 250px;
+    padding: 0px 2px 9px 0px;
+}
+
+.signup-title-logo{
+    margin: 0;
+}
+
+.title{
+   font-size:x-large;
+   font-weight: 800;
+   font-style: oblique;
+}
+
+.text-box{
+    font-style: oblique;
+    border: 1.5px solid green;
+    border-radius: 1rem;
+    height: 2.5rem;
+    background-color: transparent;
+    color: black;
+    font-weight: 700;
+    font-size: larger;
+    width: 18rem;
+    box-shadow: 3px 2px 1px green;
+}
+
+.signup-box{
+   border: 2px solid green;
+   height: 30rem;
+   width: 24rem;
+   padding-left: 3.2rem;
+   border-radius: 1.5rem;
+   box-shadow: 5px 5px 6px green;
+}
+
+.signup-btn{
+    margin-left: 6rem;
+    margin-top: 1.5rem;
+}
+
+.card-box{
+    justify-content: center;
+}
+
+.login{
+    color: blue;
+    margin-left: 100px;
+}
+
+.login:hover{
+    cursor: pointer;
+    font-size: large;
+}
+
+.last-line{
+    color: white;
+}
+
+

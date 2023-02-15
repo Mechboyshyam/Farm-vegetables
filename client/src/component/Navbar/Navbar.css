@@ -1,16 +1,22 @@
-.search-box-row{
-    margin-left: 5rem;
+.logo-project{
+    color: white;
 }
 
-.search-box{
-    width: 300px;
-    margin-top: 7px;
-    padding: 6px;
-    border:1px solid black;
-    border-radius: 8px;
-    text-align: center;git 
+.logo-project:hover{
+    color: white;
+    font-size: 25px;
+}
+
+.search-box-row{
+    margin-left: 4.5rem;
 }
 
 .title-nxt-div{
     margin-left: 100px;
+    margin-top: 7px;
 }
+
+.title-nxt-div-2{
+    margin-left: 20px;
+}
+
