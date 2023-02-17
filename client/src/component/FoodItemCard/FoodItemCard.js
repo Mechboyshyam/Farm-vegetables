@@ -32,10 +32,13 @@ function FoodItemCard({ category, description, imgUrl, price, title }) {
         <div>
           <img src={imgUrl} class="food-item-card-header-img" alt='img' />
         </div>
-        <h3 className='title-item'>{title}</h3>
-        <span>{description || title}</span><br/>
-        <span>{price}/- Only</span><br/>
-        <span>{category}</span>
+
+        <div className='info-card'>
+          <h3 className='title-item'>{title}</h3>
+          <span>{description || title}</span><br/>
+          <span className='price-box'>{price}/- Only</span><br/>
+          {/* <span>{category}</span> */}
+        </div>
 
         <div className='quantity-btn-container'>
           <span className='qnt-btn' onClick={(e)=>{setQuantity(quantity-1)}}>-</span>
@@ -51,4 +54,4 @@ function FoodItemCard({ category, description, imgUrl, price, title }) {
   )
 }
 
-export default FoodItemCard
+export default FoodItemCard;

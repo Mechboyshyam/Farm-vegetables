@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 import express from "express";
 import dotenv from "dotenv";
+// import path from "path";
+// const __dirname = path.resolve();
 dotenv.config();
+const PORT = process.env.PORT || 5000;
 
 import User from "./modals/user.js"
 import FoodItem from './modals/FoodItem.js'
@@ -287,10 +290,13 @@ app.get("/orderByUserId", async(req,res)=>{
 })
 // API ends here
 
+// api routes ends here
+// app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
+// app.get('*', (req, res) => {
+// res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+// });
 
-
-const PORT = process.env.PORT || 5000;
-app.listen(`${PORT}`, ()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })

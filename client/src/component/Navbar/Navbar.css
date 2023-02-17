@@ -2,6 +2,10 @@
     color: white;
 }
 
+.nav-bar{
+    border: 1px solid rgba(255, 255, 255, 0.377);
+}
+
 .logo-project:hover{
     color: white;
     font-size: 25px;
@@ -20,3 +24,10 @@
     margin-left: 20px;
 }
 
+.font-weight{
+    font-weight: 500;
+}
+
+.logout-btn{
+    border: 1px solid rgba(255, 255, 255, 0.459);
+}

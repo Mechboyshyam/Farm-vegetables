@@ -97,7 +97,7 @@ function Signup() {
                       <hr/>
 
                       <div className='mt-3 me-5'>
-                        <h6><span className='last-line'>Already have an account? click here to</span> <span className='login' onClick={login}><b>Log-in</b></span></h6>
+                        <h6><span className='last-line'>Already have an account? click here to</span> <span className='login btn' onClick={login}><b>Log-in</b></span></h6>
                       </div>
 
                     </div>

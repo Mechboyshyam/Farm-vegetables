@@ -1,0 +1,25 @@
+.order-btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-box{
+/* display: block;
+margin-left: auto;
+margin-right: auto; */
+text-align: center;
+font-weight: 700;
+font-size: 1.5rem;
+}
+
+.box-item{
+    background-color: rgba(255, 255, 255, 0.486);
+    padding: 0px 15px 0px 15px;
+    border-radius: 15px;
+    border: 1px solid rgb(28, 156, 124);
+}
+
+.remove-item{
+    cursor: pointer;
+}

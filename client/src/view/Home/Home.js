@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import swal from 'sweetalert';
 import './Home.css';
 import Navbar from '../../component/Navbar/Navbar';
 import FoodItemCard from './../../component/FoodItemCard/FoodItemCard.js';
-import { currentUser } from '../../util/currentUser';
+import { loginRequired } from '../../util/LoginRequired';
 
 function Home() {
-
-  if(!currentUser){
-    window.location.href='/login'
-  }
 
   const [searchText,setSearchText] = useState('')
   const [currentFoodItems,setAllFoodItems] = useState([])
@@ -37,13 +34,9 @@ function Home() {
     }
   },[searchText])
 
-
-   async function logout(){
-      if(currentUser){
-        localStorage.removeItem('currentUser')
-        window.location.href = '/login'
-      }
-    }
+    useEffect(()=>{
+        loginRequired()
+    })
 
   return (
     <div><Navbar/>
@@ -62,7 +55,6 @@ function Home() {
           }
         </div>
       </div>
-      <button className='btn bg-primary' onClick={logout}>Log out</button>
     </div>
   )
 }

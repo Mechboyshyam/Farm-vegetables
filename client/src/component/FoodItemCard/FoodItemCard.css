@@ -5,6 +5,15 @@
     width: 300px;
     border-radius: 5px;
     box-shadow: 0 0 3px #808080;
+    background-color: rgba(255, 255, 255, 0.281);
+  }
+
+  .info-card{
+    font-weight: 500;
+  }
+
+  .price-box{
+    color: red;
   }
   
   .food-item-card-header-img{
